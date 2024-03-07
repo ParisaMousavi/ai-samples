@@ -1,0 +1,341 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "column": "ml:column",
+    "extract": "ml:extract",
+    "field": "ml:field",
+    "fileProperty": "ml:fileProperty",
+    "format": "ml:format",
+    "includes": "ml:includes",
+    "isEnumeration": "ml:isEnumeration",
+    "jsonPath": "ml:jsonPath",
+    "ml": "http://mlcommons.org/schema/",
+    "parentField": "ml:parentField",
+    "path": "ml:path",
+    "recordSet": "ml:recordSet",
+    "references": "ml:references",
+    "regex": "ml:regex",
+    "repeated": "ml:repeated",
+    "replace": "ml:replace",
+    "sc": "https://schema.org/",
+    "separator": "ml:separator",
+    "source": "ml:source",
+    "subField": "ml:subField",
+    "transform": "ml:transform",
+    "data": {
+      "@id": "ml:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "ml:dataType",
+      "@type": "@vocab"
+    }
+  },
+  "citation": "None",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "url": "https://www.kaggle.com/datasets/dansbecker/melbourne-housing-snapshot",
+  "distribution": [
+    {
+      "contentUrl": "https://www.kaggle.com/api/v1/datasets/download/dansbecker/melbourne-housing-snapshot",
+      "contentSize": "450.608 KB",
+      "md5": "Du1S87XgDzyrJhu4d/V5VA==",
+      "fileExtension": ".zip",
+      "encodingFormat": "application/zip",
+      "@type": "sc:FileObject",
+      "name": "archive.zip",
+      "description": "Archive containing all the contents of the Melbourne Housing Snapshot dataset"
+    },
+    {
+      "contentUrl": "melb_data.csv",
+      "containedIn": "archive.zip",
+      "encodingFormat": "text/csv",
+      "@type": "sc:FileObject",
+      "name": "melb_data.csv"
+    }
+  ],
+  "recordSet": [
+    {
+      "field": [
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Suburb"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Suburb"
+        },
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Address"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Address"
+        },
+        {
+          "dataType": [
+            "sc:Integer"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Rooms"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Rooms"
+        },
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Type"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Type"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Price"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Price"
+        },
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Method"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Method"
+        },
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "SellerG"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "SellerG"
+        },
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Date"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Date"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Distance"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Distance"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Postcode"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Postcode"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Bedroom2"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Bedroom2"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Bathroom"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Bathroom"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Car"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Car"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Landsize"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Landsize"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "BuildingArea"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "BuildingArea"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "YearBuilt"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "YearBuilt"
+        },
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "CouncilArea"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "CouncilArea"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Lattitude"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Lattitude"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Longtitude"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Longtitude"
+        },
+        {
+          "dataType": [
+            "sc:Text"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Regionname"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Regionname"
+        },
+        {
+          "dataType": [
+            "sc:Float"
+          ],
+          "source": {
+            "distribution": "melb_data.csv",
+            "extract": {
+              "column": "Propertycount"
+            }
+          },
+          "@type": "ml:Field",
+          "name": "Propertycount"
+        }
+      ],
+      "@type": "ml:RecordSet",
+      "name": "melb_data.csv_records"
+    }
+  ],
+  "@type": "sc:Dataset",
+  "name": "Melbourne-Housing-Snapshot",
+  "description": "Snapshot of Tony Pino\u0027s Melbourne Housing Dataset"
+}
