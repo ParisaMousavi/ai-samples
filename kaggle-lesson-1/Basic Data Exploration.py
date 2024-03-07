@@ -321,4 +321,157 @@ print(val_mae)
 # MAGIC
 # MAGIC Since we care about accuracy on new data, which we estimate from our validation data, we want to find the sweet spot between underfitting and overfitting. Visually, we want the low point of the (red) validation curve in the figure below.
 # MAGIC
+# MAGIC Example¶
+# MAGIC There are a few alternatives for controlling the tree depth, and many allow for some routes through the tree to have greater depth than other routes. But the max_leaf_nodes argument provides a very sensible way to control overfitting vs underfitting. The more leaves we allow the model to make, the more we move from the underfitting area in the above graph to the overfitting area.
 # MAGIC
+# MAGIC We can use a utility function to help compare MAE scores from different values for max_leaf_nodes:
+# MAGIC
+# MAGIC
+
+# COMMAND ----------
+
+from sklearn.metrics import mean_absolute_error
+from sklearn.tree import DecisionTreeRegressor
+
+def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
+    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0)
+    model.fit(train_X, train_y)
+    preds_val = model.predict(val_X)
+    mae = mean_absolute_error(val_y, preds_val)
+    return(mae)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC The data is loaded into train_X, val_X, train_y and val_y using the code you've already seen (and which you've already written).
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC We can use a for-loop to compare the accuracy of models built with different values for max_leaf_nodes.
+
+# COMMAND ----------
+
+# compare MAE with differing values of max_leaf_nodes
+for max_leaf_nodes in [5, 50, 500, 5000]:
+    my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
+    print("Max leaf nodes: %d  \t\t Mean Absolute Error:  %d" %(max_leaf_nodes, my_mae))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC Conclusion
+# MAGIC Here's the takeaway: Models can suffer from either:
+# MAGIC
+# MAGIC Overfitting: capturing spurious patterns that won't recur in the future, leading to less accurate predictions, or
+# MAGIC Underfitting: failing to capture relevant patterns, again leading to less accurate predictions.
+# MAGIC We use validation data, which isn't used in model training, to measure a candidate model's accuracy. This lets us try many candidate models and keep the best one.
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ```python
+# MAGIC # Code you have previously used to load data
+# MAGIC import pandas as pd
+# MAGIC from sklearn.metrics import mean_absolute_error
+# MAGIC from sklearn.model_selection import train_test_split
+# MAGIC from sklearn.tree import DecisionTreeRegressor
+# MAGIC
+# MAGIC
+# MAGIC # Path of the file to read
+# MAGIC iowa_file_path = '../input/home-data-for-ml-course/train.csv'
+# MAGIC
+# MAGIC home_data = pd.read_csv(iowa_file_path)
+# MAGIC # Create target object and call it y
+# MAGIC y = home_data.SalePrice
+# MAGIC # Create X
+# MAGIC features = ['LotArea', 'YearBuilt', '1stFlrSF', '2ndFlrSF', 'FullBath', 'BedroomAbvGr', 'TotRmsAbvGrd']
+# MAGIC X = home_data[features]
+# MAGIC
+# MAGIC # Split into validation and training data
+# MAGIC train_X, val_X, train_y, val_y = train_test_split(X, y, random_state=1)
+# MAGIC
+# MAGIC # Specify Model
+# MAGIC iowa_model = DecisionTreeRegressor(random_state=1)
+# MAGIC # Fit Model
+# MAGIC iowa_model.fit(train_X, train_y)
+# MAGIC
+# MAGIC # Make validation predictions and calculate mean absolute error
+# MAGIC val_predictions = iowa_model.predict(val_X)
+# MAGIC val_mae = mean_absolute_error(val_predictions, val_y)
+# MAGIC print("Validation MAE: {:,.0f}".format(val_mae))
+# MAGIC ```
+
+# COMMAND ----------
+
+def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
+    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0)
+    model.fit(train_X, train_y)
+    preds_val = model.predict(val_X)
+    mae = mean_absolute_error(val_y, preds_val)
+    return(mae)
+
+
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC Step 1: Compare Different Tree Sizes
+# MAGIC Write a loop that tries the following values for max_leaf_nodes from a set of possible values.
+# MAGIC
+# MAGIC Call the get_mae function on each value of max_leaf_nodes. Store the output in some way that allows you to select the value of max_leaf_nodes that gives the most accurate model on your data.
+
+# COMMAND ----------
+
+candidate_max_leaf_nodes = [5, 25, 50, 100, 250, 500]
+# Write loop to find the ideal tree size from candidate_max_leaf_nodes
+scores = {leaf_size: get_mae(leaf_size, train_X, val_X, train_y, val_y) for leaf_size in candidate_max_leaf_nodes}
+print(scores)
+# Store the best value of max_leaf_nodes (it will be either 5, 25, 50, 100, 250 or 500)
+best_tree_size = min(scores, key=scores.get)
+print(best_tree_size)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC Step 2: Fit Model Using All Data
+# MAGIC You know the best tree size. If you were going to deploy this model in practice, you would make it even more accurate by using all of the data and keeping that tree size. That is, you don't need to hold out the validation data now that you've made all your modeling decisions.
+
+# COMMAND ----------
+
+# Fit the model with best_tree_size. Fill in argument to make optimal size
+final_model = DecisionTreeRegressor(max_leaf_nodes=best_tree_size, random_state=1)
+
+# fit the final model
+final_model.fit(X, y)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Random forest
+# MAGIC
+# MAGIC We build a random forest model similarly to how we built a decision tree in scikit-learn - this time using the RandomForestRegressor class instead of DecisionTreeRegressor.
+
+# COMMAND ----------
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error
+
+forest_model = RandomForestRegressor(random_state=1)
+forest_model.fit(train_X, train_y)
+melb_preds = forest_model.predict(val_X)
+print(mean_absolute_error(val_y, melb_preds))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Generate a submission
+# MAGIC Run the code cell below to generate a CSV file with your predictions that you can use to submit to the competition.
+
+# COMMAND ----------
+
+# Run the code to save predictions in the format used for competition scoring
+
+output = pd.DataFrame({'Id': test_data.Id,
+                       'SalePrice': test_preds})
+output.to_csv('submission.csv', index=False)
