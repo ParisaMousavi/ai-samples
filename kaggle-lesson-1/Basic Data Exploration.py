@@ -25,7 +25,7 @@ melbourne_data.describe()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC # nterpreting Data Description
+# MAGIC # Interpreting Data Description
 # MAGIC
 # MAGIC The results show 8 numbers for each column in your original dataset. The first number, the count, shows how many rows have non-missing values.
 # MAGIC
