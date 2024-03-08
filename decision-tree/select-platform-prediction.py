@@ -99,3 +99,33 @@ def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
 for max_leaf_nodes in [2, 4, 6, 8]:
     my_mae = get_mae(max_leaf_nodes, X, test_X, y, test_y)
     print("Max leaf nodes: %d  \t\t Mean Absolute Error:  %d" %(max_leaf_nodes, my_mae))
+
+# COMMAND ----------
+
+candidate_max_leaf_nodes = [2, 4, 6, 8, 12]
+# Write loop to find the ideal tree size from candidate_max_leaf_nodes
+scores = {leaf_size: get_mae(leaf_size, X, test_X, y, test_y) for leaf_size in candidate_max_leaf_nodes}
+print(scores)
+# Store the best value of max_leaf_nodes (it will be either 5, 25, 50, 100, 250 or 500)
+best_tree_size = min(scores, key=scores.get)
+print(best_tree_size)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Random Forests
+
+# COMMAND ----------
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error
+
+forest_model = RandomForestRegressor(random_state=0)
+forest_model.fit(X, y)
+dt_preds = forest_model.predict(test_X)
+print(mean_absolute_error(test_y, dt_preds))
+
+# COMMAND ----------
+
+output = pd.DataFrame({'Id': 1, 'Platform': dt_preds})
+output.to_csv('submission.csv', index=False)
