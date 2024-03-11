@@ -112,6 +112,17 @@ print(best_tree_size)
 
 # COMMAND ----------
 
+from sklearn import tree
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(25,20))
+_ = tree.plot_tree(dt_model,
+                   feature_names=dt_features,
+                   class_names="Plaform",
+                   filled=True)
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC # Random Forests
 
