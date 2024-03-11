@@ -39,7 +39,7 @@ dt_model.fit(X, y)
 
 # COMMAND ----------
 
-print("Making predictions for the following 5 houses:")
+print("Making predictions for the following 5 first rows:")
 print(X.head())
 print("The predictions are")
 print(dt_model.predict(X.head()))
