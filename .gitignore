@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Azure.AI.Codes/.vs/Azure.AI.Codes
+/Azure.AI.Codes/Azure.AI.Agent/bin/Debug/net8.0
+/Azure.AI.Codes/Azure.AI.Agent/obj
+/Azure.AI.Codes/Azure.AI.Agent/Azure.AI.Agent.csproj.user
