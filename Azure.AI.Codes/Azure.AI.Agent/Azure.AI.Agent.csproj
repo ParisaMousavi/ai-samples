@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.AI.Agents.Persistent" Version="1.0.0" />
     <PackageReference Include="Azure.Identity" Version="1.14.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6" />
