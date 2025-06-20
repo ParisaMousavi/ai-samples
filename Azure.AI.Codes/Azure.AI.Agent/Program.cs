@@ -85,8 +85,8 @@ foreach (PersistentThreadMessage threadMessage in messages)
 }
 
 //Clean up test resources.
-client.Threads.DeleteThread(threadId: thread.Id);
-client.Administration.DeleteAgent(agentId: agent.Id);
+//client.Threads.DeleteThread(threadId: thread.Id);
+//client.Administration.DeleteAgent(agentId: agent.Id);
 
 // See https://aka.ms/new-console-template for more information
 Console.ReadLine();

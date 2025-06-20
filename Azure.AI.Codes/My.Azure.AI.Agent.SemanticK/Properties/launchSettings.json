@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "My.Azure.AI.Agent.SemanticK": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

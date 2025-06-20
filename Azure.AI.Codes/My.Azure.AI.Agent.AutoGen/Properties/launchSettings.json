@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "My.Azure.AI.Agent.AutoGen": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
