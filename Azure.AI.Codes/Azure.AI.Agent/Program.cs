@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 
 // Page: https://learn.microsoft.com/en-us/azure/ai-foundry/agents/quickstart?pivots=programming-language-csharp
+// Sample https://github.com/azure-ai-foundry/foundry-samples/blob/main/samples/microsoft/csharp/getting-started-agents/Basics/BasicsAsync.cs
+
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)
@@ -85,8 +87,8 @@ foreach (PersistentThreadMessage threadMessage in messages)
 }
 
 //Clean up test resources.
-//client.Threads.DeleteThread(threadId: thread.Id);
-//client.Administration.DeleteAgent(agentId: agent.Id);
+client.Threads.DeleteThread(threadId: thread.Id);
+client.Administration.DeleteAgent(agentId: agent.Id);
 
 // See https://aka.ms/new-console-template for more information
 Console.ReadLine();
