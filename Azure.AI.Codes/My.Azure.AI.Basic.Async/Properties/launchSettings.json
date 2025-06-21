@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "My.Azure.AI.Basic.Async": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
