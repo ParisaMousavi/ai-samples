@@ -1,0 +1,15 @@
+{
+    "_experiment_id": "818550568062833",
+    "_name": "/Shared/housing",
+    "_artifact_location": "dbfs:/databricks/mlflow-tracking/818550568062833",
+    "_lifecycle_stage": "active",
+    "_tags": {
+        "mlflow.experiment.sourceName": "/Shared/housing",
+        "mlflow.ownerId": "3693810579583680",
+        "mlflow.ownerEmail": "parisa.global.admin@parisamoosavinezhadhotmail.onmicrosoft.com",
+        "mlflow.experimentType": "MLFLOW_EXPERIMENT",
+        "repository_name": "price-prediction"
+    },
+    "_creation_time": 1782680616392,
+    "_last_update_time": 1782680616392
+}
